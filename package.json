@@ -1,0 +1,30 @@
+{
+  "name": "ropebuffer",
+  "version": "0.0.1",
+  "description": "Rope-ish managed buffer",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/msiebuhr/node-ropebuffer.git"
+  },
+  "keywords": [
+    "rope",
+    "buffer",
+    "dynamic",
+    "management",
+    "zero",
+    "copy"
+  ],
+  "author": "Morten Siebuhr",
+  "license": "BSD",
+  "devDependencies": {
+    "vows": "~0.6.4",
+    "jshint": "~0.8.0"
+  }
+}
