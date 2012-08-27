@@ -12,7 +12,7 @@ vows.describe("Internals").addBatch({
             assert.equal(rb._buffersLength, 10);
         },
         '_getInternalIndex(1) → {b:0, i:1}': function (rb) {
-            assert.deepEqual( rb._getInternalIndex(1), {buffer: 0, index: 1});
+            assert.deepEqual(rb._getInternalIndex(1), {buffer: 0, index: 1});
         },
         '_getInternalIndex(100) → Error': function (rb) {
             assert.throws(function () {rb._getInternalIndex(100); }, Error);
@@ -41,13 +41,13 @@ vows.describe("Internals").addBatch({
                 assert.equal(rb._buffers[1].length, 20);
             },
             '_getInternalIndex(9) → {b:0, i:9}': function (rb) {
-                assert.deepEqual( rb._getInternalIndex(9), {buffer: 0, index: 9});
+                assert.deepEqual(rb._getInternalIndex(9), {buffer: 0, index: 9});
             },
             '_getInternalIndex(10) → {b:1, i:0}': function (rb) {
-                assert.deepEqual( rb._getInternalIndex(10), {buffer: 1, index: 0});
+                assert.deepEqual(rb._getInternalIndex(10), {buffer: 1, index: 0});
             },
             '_getInternalIndex(11) → {b:1, i:1}': function (rb) {
-                assert.deepEqual( rb._getInternalIndex(11), {buffer: 1, index: 1});
+                assert.deepEqual(rb._getInternalIndex(11), {buffer: 1, index: 1});
             }
         }
     }
