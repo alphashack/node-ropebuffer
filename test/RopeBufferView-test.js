@@ -33,26 +33,25 @@ vows.describe("RopeBufferView").addBatch({
             return new RopeBufferView(2);
         },
 
-        '.writeInt32BE(0) → Error': function (rb) {
+        '.readInt32BE() → Error': function (rb) {
             assert.throws(
-                function () { rb.writeInt32BE(0); },
+                function () { rb.readInt32BE(); },
                 Error
             );
         },
-        '.writeInt32BEAt(0, 0) → Error': function (rb) {
+        '.readInt32BEAt(0) → Error': function (rb) {
             assert.throws(
-                function () { rb.writeInt32BEAt(0, 0); },
-                Error
-            );
-        },
-
-        '.writeInt16LEAt(0, 1) → Error': function (rb) {
-            assert.throws(
-                function () { rb.writeInt16LEAt(0, 1); },
+                function () { rb.readInt32BEAt(0); },
                 Error
             );
         },
 
+        '.readInt16LEAt(1) → Error': function (rb) {
+            assert.throws(
+                function () { rb.readInt16LEAt(1); },
+                Error
+            );
+        },
 
         '.writeUInt16BEAt(258, 0)': {
             topic: function (rb) {
@@ -81,6 +80,31 @@ vows.describe("RopeBufferView").addBatch({
                 );
             }
         }
+    }
+}).addBatch({
+    'RBV(1)': {
+        topic: function () {
+            return new RopeBufferView(1);
+        },
+        '.writeUInt32BEAt(0x01020304, 0)': {
+            topic: function (rb) {
+                rb.writeUInt32BEAt(0x01020304, 0);
+                return rb;
+            },
+            '.readUInt8At(0) → 1': function (rb) {
+                assert.equal(rb.readUInt8At(0), 1);
+            },
+            '.readUInt8At(1) → 2': function (rb) {
+                assert.equal(rb.readUInt8At(1), 2);
+            },
+            '.readUInt8At(2) → 3': function (rb) {
+                assert.equal(rb.readUInt8At(2), 3);
+            },
+            '.readUInt8At(3) → 4': function (rb) {
+                assert.equal(rb.readUInt8At(3), 4);
+            }
+        }
+
     }
 })['export'](module);
 
