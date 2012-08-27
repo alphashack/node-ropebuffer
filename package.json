@@ -2,7 +2,7 @@
   "name": "ropebuffer",
   "version": "0.0.1",
   "description": "Rope-ish managed buffer",
-  "main": "lib/index.js",
+  "main": "lib/RopeBufferView.js",
   "directories": {
     "test": "test"
   },

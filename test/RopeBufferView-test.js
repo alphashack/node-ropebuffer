@@ -1,11 +1,11 @@
 var vows = require('vows'),
     assert = require('assert'),
-    RopeBuffer = require('../lib');
+    RopeBufferView = require('../lib/RopeBufferView');
 
-vows.describe("Read / Write").addBatch({
-    "RopeBuffer(1)": {
+vows.describe("RopeBufferView").addBatch({
+    "RBV(1)": {
         topic: function () {
-            return new RopeBuffer(1);
+            return new RopeBufferView(1);
         },
         '.tell → 0': function (rb) { assert.equal(rb.tell, 0); },
         '.writeUInt8(55)': {
@@ -28,9 +28,9 @@ vows.describe("Read / Write").addBatch({
             }
         }
     },
-    'RopeBuffer(2)': {
+    'RBV(2)': {
         topic: function () {
-            return new RopeBuffer(2);
+            return new RopeBufferView(2);
         },
 
         '.writeInt32BE(0) → Error': function (rb) {
