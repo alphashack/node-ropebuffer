@@ -24,10 +24,10 @@ vows.describe("RawRopeBuffer").addBatch({
             '._buffersLength >= 30': function (rb) {
                 assert(rb._buffersLength >= 30);
             },
-            '._buffers have lengths [10, 20]': function (rb) {
+            '._buffers have lengths [=10, >20]': function (rb) {
                 assert.equal(rb._buffers.length, 2);
                 assert.equal(rb._buffers[0].length, 10);
-                assert.equal(rb._buffers[1].length, 20);
+                assert(rb._buffers[1].length >= 20);
             },
             'indexToBuffer(9) → {b:0, i:9}': function (rb) {
                 assert.deepEqual(
