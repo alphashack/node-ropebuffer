@@ -48,6 +48,34 @@ vows.describe("RawRopeBuffer").addBatch({
                 );
             }
         }
+    },
+
+    /* Ensure continuous buffers for reading and writing */
+    'ensureContinuousReadable() w/o. merge': {
+        topic: function () {
+            var rb = new RawRopeBuffer([new Buffer(2), new Buffer(2)]);
+            rb.ensureContinuousReadable(0, 2);
+            return rb;
+        },
+        "Didn't merge": function (rb) {
+            assert.equal(rb._buffers.length, 2);
+        },
+        "Total length didn't increase": function (rb) {
+            assert.equal(rb._buffersLength, 4);
+        }
+    },
+    'ensureContinuousReadable() w. merge': {
+        topic: function () {
+            var rb = new RawRopeBuffer([new Buffer(2), new Buffer(2)]);
+            rb.ensureContinuousReadable(0, 3);
+            return rb;
+        },
+        "Merged": function (rb) {
+            assert.equal(rb._buffers.length, 1);
+        },
+        "Total length didn't increase": function (rb) {
+            assert.equal(rb._buffersLength, 4);
+        }
     }
 })['export'](module);
 
